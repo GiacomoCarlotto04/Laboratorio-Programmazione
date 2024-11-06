@@ -1,3 +1,4 @@
+#include <iostream>
 #include "MyVector.h"
 
 // Costruttore
@@ -6,11 +7,18 @@ MyVector::MyVector(int n): n(n), p{ new double[n] } {
         p[i] = 0;
 }
 
-// Get
-double MyVector::safe_get(int i) {
+// Get non const
+double& MyVector::safe_get(int i){
     if (i < n && i >= 0)
         return p[i];
-    return -1;
+    throw std::out_of_range("Errore: indice vector fuori dal range");
+}
+
+// Get const
+double MyVector::safe_get(int i) const{
+    if (i < n && i >= 0)
+        return p[i];
+    throw std::out_of_range("Errore: indice vector fuori dal range");
 }
 
 // Set
@@ -20,14 +28,14 @@ void MyVector::safe_set(int i, double x) {
 }
 
 // Overload operator [] non const
-//MyVector MyVector::operator[](MyVector v){
-//    return null;
-//}
-//
-//// Overload operator [] const
-//MyVector MyVector::operator[](const MyVector& v){
-//    return null;
-//}
+double& MyVector::operator[](int i){
+    return safe_get(i);
+}
+
+// Overload operator [] const
+double MyVector::operator[](int i) const{
+    return safe_get(i);
+}
 
 // Distruttore
 MyVector::~MyVector() {
