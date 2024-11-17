@@ -7,6 +7,17 @@ MyVector::MyVector(int s): sz{s}, p{ new double[sz_buffer] } { }
 // Costruttore di default
 MyVector::MyVector(): sz{0}, p{ new double[sz_buffer] } { }
 
+// Costruttore di copia
+MyVector::MyVector(const MyVector& v): sz{v.sz}, p{new double[v.sz_buffer]}{
+    std::copy(v.p, v.p + sz, p);
+}
+
+// Costruttore di move
+MyVector::MyVector(MyVector&& v): sz{v.sz}, p{v.p} {
+    v.sz = 0;
+    v.p = nullptr;
+}
+
 // Distruttore
 MyVector::~MyVector() {
     delete[] p;
@@ -34,6 +45,26 @@ double& MyVector::operator[](int i){
 // Overload operator [] const
 double& MyVector::operator[](int i) const{
 	return at(i);
+}
+
+// Overload operator = per copy
+MyVector& MyVector::operator=(const MyVector& v){
+    double* new_p = new double[v.sz_buffer];
+    std::copy(v.p, v.p + v.sz, new_p);
+    delete[] p;
+    p = new_p;
+    sz = v.sz;
+    return *this;
+}
+
+// Overload operator = per move
+MyVector& MyVector::operator=(MyVector&& v){
+    delete[] p;
+    p = v.p;
+    sz = v.sz;
+    v.p = nullptr;
+    v.sz = 0;
+    return *this;
 }
 
 // Funzioni push_back() e pop_back()

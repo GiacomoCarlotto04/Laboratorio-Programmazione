@@ -3,6 +3,8 @@ class MyVector {
         // Costruttore
         MyVector(int s);
         MyVector();
+        MyVector(const MyVector& v);
+        MyVector(MyVector&& v);
 
         // Distruttore
         ~MyVector();
@@ -10,7 +12,9 @@ class MyVector {
         // Overload operatori
         double& operator[](int i);
         double& operator[](int i) const;
-        
+        MyVector& operator=(const MyVector& v);
+        MyVector& operator=(MyVector&& v);
+
         // Funzioni membro
         double& at(int i);
         double& at(int i) const;
