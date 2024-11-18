@@ -33,5 +33,5 @@ class MyVector {
         T *p;
 };
 
-#include "MyVector.cpp"
+//#include "MyVector.cpp"
 #endif
