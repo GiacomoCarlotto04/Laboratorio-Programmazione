@@ -1,5 +1,5 @@
 #include <iostream>
-#include "MyVector.cpp"
+#include "MyVector.hpp"
 
 
 int main() {

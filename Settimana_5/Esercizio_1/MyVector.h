@@ -1,5 +1,5 @@
-#ifndef MYVECTOR_H
-#define MYVECTOR_H
+#ifndef MyVector_h
+#define MyVector_h
 
 template<typename T>
 class MyVector {
@@ -33,5 +33,4 @@ class MyVector {
         T *p;
 };
 
-//#include "MyVector.cpp"
 #endif

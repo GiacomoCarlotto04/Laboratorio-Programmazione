@@ -1,5 +1,5 @@
-#ifndef MYVECTOR_CPP
-#define MYVECTOR_CPP
+#ifndef MyVector_hpp
+#define MyVector_hpp
 #include <iostream>
 #include "MyVector.h"
 
